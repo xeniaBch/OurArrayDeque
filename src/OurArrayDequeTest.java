@@ -25,18 +25,15 @@ public class OurArrayDequeTest {
         ourArrayDeque.addFirst(5);
         ourArrayDeque.addFirst(3);
         ourArrayDeque.addLast(-1);
-        assertEquals(-1, ourArrayDeque.getFirst());
+        assertEquals(3, ourArrayDeque.getFirst());
     }
 
     @Test
     public void lastElementTest(){
         ourArrayDeque.addLast(5);
-        System.out.println(ourArrayDeque.getSource());
         ourArrayDeque.addLast(-2);
-        System.out.println(ourArrayDeque.getSource());
         ourArrayDeque.addLast(2);
         ourArrayDeque.addLast(3);
-        System.out.println(ourArrayDeque.getSource());
         assertEquals(3, ourArrayDeque.getLast());
     }
 

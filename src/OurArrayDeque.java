@@ -1,6 +1,7 @@
 public class OurArrayDeque<T> implements OurDeque{
 
     int firstElementIndex;
+    int nextElementIndex;
     int size;
     int capacity ;
 
@@ -20,16 +21,8 @@ public class OurArrayDeque<T> implements OurDeque{
 
         if (size == capacity) {
         }
-        //firstElementIndex = (firstElementIndex + size) % capacity;
-        //firstElementIndex = (firstElementIndex + size) / capacity;
-
-        //TODO: need to check
-        if(source[firstElementIndex] != null){
-            Object temp = source[firstElementIndex];
-            source[firstElementIndex++] = temp;
-            source[firstElementIndex] = elt;
-        }
-        source[firstElementIndex] = elt;
+        nextElementIndex = (firstElementIndex + size) % capacity;
+        source[nextElementIndex] = elt;
         size++;
     }
 
@@ -70,8 +63,8 @@ public class OurArrayDeque<T> implements OurDeque{
         if(size==0) {
             return null;
         }
-        //return source[(firstElementIndex + size - 1) % capacity];
-        return source[size - 1];
+        return source[(firstElementIndex + size - 1) % capacity];
+        //return source[size - 1];
     }
 
     @Override
