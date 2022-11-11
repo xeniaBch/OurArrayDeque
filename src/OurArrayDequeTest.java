@@ -1,6 +1,9 @@
 import org.junit.Test;
 import task2.Task2;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class OurArrayDequeTest {
@@ -37,5 +40,23 @@ public class OurArrayDequeTest {
         assertEquals(3, ourArrayDeque.getLast());
     }
 
+
+    @Test
+    public void iterableTest(){
+        ourArrayDeque.addLast(5);
+        ourArrayDeque.addLast(-2);
+        ourArrayDeque.addLast(2);
+        ourArrayDeque.addLast(3);
+        List<Integer> expected = new ArrayList<>();
+        expected.add(5);
+        expected.add(-2);
+        expected.add(2);
+        expected.add(3);
+        List<Integer> actual = new ArrayList<>();
+        while (ourArrayDeque.iterator().hasNext()){
+            actual.add((Integer) ourArrayDeque.iterator().next());
+        }
+        assertEquals(expected, actual);
+    }
 
 }

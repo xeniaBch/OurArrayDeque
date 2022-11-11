@@ -1,4 +1,6 @@
-public class OurArrayDeque<T> implements OurDeque{
+import java.util.Iterator;
+
+public class OurArrayDeque<T> implements OurDeque {
 
     int firstElementIndex;
     int nextElementIndex;
@@ -80,4 +82,48 @@ public class OurArrayDeque<T> implements OurDeque{
         return size;
     }
 
+    @Override
+    public Iterator iterator() {
+        return new OurDequeIterator();
+    }
+    class OurDequeIterator implements Iterator<T> {
+
+        int currentIndexNumber;
+
+        @Override
+        public boolean hasNext() {
+            return currentIndexNumber < size();
+        }
+
+        @Override
+        public T next() {
+            int iteratedIndex = (firstElementIndex + currentIndexNumber) % capacity;
+            currentIndexNumber++;
+            return (T) source[iteratedIndex];
+        }
+    }
+
+   /* @Override
+    public Iterator iterator() {
+        return new Iterator() {
+
+            int currentIndexNumber;
+           @Override
+            public boolean hasNext() {
+                return currentIndexNumber < size();
+            }
+
+            @Override
+            public T next() {
+                int iteratedIndex = (firstElementIndex + currentIndexNumber) % capacity;
+                currentIndexNumber++;
+                return (T) source[iteratedIndex];
+            }
+        };
+    }*/
+
+
 }
+
+
+
