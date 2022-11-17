@@ -83,7 +83,7 @@ public class OurArrayDeque<T> implements OurDeque {
     }
 
     @Override
-    public Iterator iterator() {
+    public Iterator<T> iterator() {
         return new OurDequeIterator();
     }
     class OurDequeIterator implements Iterator<T> {
@@ -103,9 +103,9 @@ public class OurArrayDeque<T> implements OurDeque {
         }
     }
 
-   /* @Override
-    public Iterator iterator() {
-        return new Iterator() {
+   /*@Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
 
             int currentIndexNumber;
            @Override
