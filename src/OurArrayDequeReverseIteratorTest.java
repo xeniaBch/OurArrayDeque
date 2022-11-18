@@ -1,13 +1,15 @@
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 import static org.junit.Assert.*;
 
 public class OurArrayDequeReverseIteratorTest {
     OurArrayDeque ourArrayDeque = new OurArrayDeque<>(10);
-    OurArrayDequeReverseIterator<Integer> iterator = new OurArrayDequeReverseIterator(ourArrayDeque);
+
 
 
     @Test
@@ -15,13 +17,12 @@ public class OurArrayDequeReverseIteratorTest {
         ourArrayDeque.addLast(5);
         ourArrayDeque.addLast(4);
         ourArrayDeque.addLast(2);
-        List<Integer> expected = new ArrayList<>();
-        expected.add(2);
-        expected.add(4);
-        expected.add(5);
+        List<Integer> expected = Arrays.asList(2,4,5);
         List<Integer> actual = new ArrayList<>();
+        Iterator <Integer> iterator = new OurArrayDequeReverseIterator<>(ourArrayDeque);
         while (iterator.hasNext()){
-          actual.add(iterator.next());
+            int current = iterator.next();
+            actual.add(current);
         }
         System.out.println(actual);
         assertEquals(expected, actual);
@@ -38,8 +39,10 @@ public class OurArrayDequeReverseIteratorTest {
         expected.add(4);
         expected.add(2);
         List<Integer> actual = new ArrayList<>();
+        Iterator <Integer> iterator = new OurArrayDequeReverseIterator<>(ourArrayDeque);
         while (iterator.hasNext()){
-            actual.add(iterator.next());
+            int current = iterator.next();
+            actual.add(current);
         }
         assertEquals(expected, actual);
     }

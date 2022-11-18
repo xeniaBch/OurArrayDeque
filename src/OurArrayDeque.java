@@ -22,6 +22,7 @@ public class OurArrayDeque<T> implements OurDeque {
     public void addLast(Object elt) {
 
         if (size == capacity) {
+            throw new OurDequeOverflowException();
         }
         nextElementIndex = (firstElementIndex + size) % capacity;
         source[nextElementIndex] = elt;
@@ -31,7 +32,7 @@ public class OurArrayDeque<T> implements OurDeque {
     @Override
     public void addFirst(Object elt) {
         if (size == capacity) {
-
+            throw new OurDequeOverflowException();
         }
         if(firstElementIndex > 0) firstElementIndex--;
         else firstElementIndex = capacity - 1;
@@ -42,7 +43,7 @@ public class OurArrayDeque<T> implements OurDeque {
     @Override
     public Object removeLast() {
         if (size == 0){
-
+            throw new OurDequeEmptyException();
         }
         Object res = source[(firstElementIndex + size - 1) % capacity];
         size--;
@@ -52,7 +53,7 @@ public class OurArrayDeque<T> implements OurDeque {
     @Override
     public Object removeFirst() {
         if (size == 0){
-
+            throw new OurDequeEmptyException();
         }
         Object res = source[firstElementIndex];
         firstElementIndex = (firstElementIndex++) % capacity;
@@ -63,7 +64,7 @@ public class OurArrayDeque<T> implements OurDeque {
     @Override
     public Object getLast() {
         if(size==0) {
-            return null;
+            throw new OurDequeEmptyException();
         }
         return source[(firstElementIndex + size - 1) % capacity];
         //return source[size - 1];
@@ -72,7 +73,7 @@ public class OurArrayDeque<T> implements OurDeque {
     @Override
     public Object getFirst() {
         if(size==0) {
-            return null;
+            throw new OurDequeEmptyException();
         }
         return source[firstElementIndex];
     }
